@@ -1,7 +1,9 @@
 import os
-from mlflow import log_metric, log_param, log_artifact
+from mlflow import log_metric, log_param, log_artifact, start_run, end_run
 
-def bar(p1) :
+
+def bar(p1):
+    start_run()
     # Log a parameter (key-value pair)
     log_param("param1", p1)
 
@@ -14,3 +16,4 @@ def bar(p1) :
     with open("output.txt", "w") as f:
         f.write("Hello world!")
     log_artifact("output.txt")
+    end_run()
